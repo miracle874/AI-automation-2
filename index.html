@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dunamis Digital — Professional Video Editing &amp; AI Storytelling for Business</title>
+<meta name="description" content="Dunamis Digital delivers broadcast-quality video editing for companies, industries and big business owners — powered by AI-driven storytelling that turns your services into stories people remember." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffb43a'/%3E%3Cpath d='M26 20l18 12-18 12z' fill='%23120d02'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#08080d; --bg2:#0d0d15; --surface:#13131d; --surface2:#181826;
+  --border:rgba(255,255,255,.09); --text:#f5f5f9; --muted:#a0a0b4;
+  --accent:#ffb43a; --accent2:#ff7a1a; --violet:#8b5cf6;
+  --radius:18px;
+  --font-head:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px;overflow-x:hidden}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(255,180,58,.32)}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative;scroll-margin-top:84px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-head);font-weight:600;font-size:1rem;padding:15px 30px;border-radius:12px;border:none;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s;letter-spacing:.2px}
+.btn-primary{background:linear-gradient(135deg,#ffc255,#ff8a2a);color:#231202;box-shadow:0 10px 34px rgba(255,164,40,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(255,164,40,.4)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:rgba(255,180,58,.55);background:rgba(255,180,58,.07);transform:translateY(-2px)}
+.btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.btn-nav{padding:11px 22px;border-radius:10px;font-size:.9rem}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s}
+.nav.scrolled{background:rgba(8,8,13,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--font-head);font-weight:700;font-size:1.12rem;letter-spacing:.4px}
+.logo-badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ffc255,#ff8a2a);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(255,164,40,.35)}
+.logo span em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.93rem;font-weight:500;color:#cfcfdd;transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);border-radius:2px;transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:74px;left:0;right:0;background:rgba(9,9,15,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:99;flex-direction:column;padding:26px 24px 30px;gap:20px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--font-head);font-weight:600;font-size:1.05rem}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;position:relative;overflow:hidden;
+  background:radial-gradient(820px 520px at 12% 18%,rgba(255,180,58,.13),transparent 60%),
+             radial-gradient(720px 520px at 88% 12%,rgba(139,92,246,.16),transparent 60%),
+             radial-gradient(900px 600px at 50% 115%,rgba(255,122,26,.10),transparent 60%),
+             var(--bg)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent 75%)}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:64px;align-items:center;position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,180,58,.09);border:1px solid rgba(255,180,58,.3);color:var(--accent);font-size:.8rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:26px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse-dot 1.8s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(255,180,58,.5)}50%{box-shadow:0 0 0 6px rgba(255,180,58,0)}}
+h1{font-family:var(--font-head);font-size:clamp(2.15rem,5.1vw,4.15rem);line-height:1.06;letter-spacing:-1.5px;font-weight:700;margin-bottom:24px}
+.grad-text{background:linear-gradient(90deg,#ffc255,#ff7a1a 60%,#ff9a3a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{color:var(--muted);font-size:1.13rem;max-width:560px;margin-bottom:36px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--font-head);font-size:1.9rem;letter-spacing:-.5px;line-height:1.1}
+.stat span{font-size:.83rem;color:var(--muted);letter-spacing:.3px}
+
+/* ---------- Hero showreel card ---------- */
+.hero-visual{position:relative;z-index:2}
+.reel-card{background:linear-gradient(160deg,#1a1a28,#101019);border:1px solid var(--border);border-radius:24px;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,.55);position:relative;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.reel-screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+  background:radial-gradient(120% 130% at 18% 12%,rgba(255,180,58,.38),transparent 55%),
+             radial-gradient(120% 130% at 88% 85%,rgba(139,92,246,.42),transparent 55%),
+             linear-gradient(140deg,#1b1030,#0c0c16);
+  display:flex;align-items:center;justify-content:center}
+.reel-screen::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 30%)}
+.play-btn{position:relative;z-index:3;border:none;width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#ffc255,#ff8a2a);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(255,150,40,.45);transition:transform .3s;position:relative;z-index:2}
+.play-btn:hover{transform:scale(1.08)}
+.reel-timeline{margin-top:16px;display:flex;align-items:center;gap:14px}
+.timecode{font-family:var(--font-head);font-size:.7rem;color:var(--muted);letter-spacing:1px;white-space:nowrap}
+.wavebars{display:flex;align-items:center;gap:3px;height:34px;flex:1}
+.wavebars i{width:3px;border-radius:2px;background:linear-gradient(180deg,#ffb43a,#ff7a1a);animation:pulse-bar 1.5s ease-in-out infinite}
+@keyframes pulse-bar{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.55;transform:scaleY(.72)}}
+.chip{position:absolute;display:flex;align-items:center;gap:9px;background:rgba(14,14,22,.93);border:1px solid var(--border);backdrop-filter:blur(8px);padding:9px 15px;border-radius:999px;font-size:.78rem;font-weight:600;color:#e8e8f2;box-shadow:0 10px 30px rgba(0,0,0,.45);z-index:3;white-space:nowrap}
+.chip .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.chip-1{top:-16px;left:-14px;animation:float 6s ease-in-out infinite}
+.chip-1 .dot{background:var(--accent)}
+.chip-2{top:40%;right:-12px;animation:float 7.5s ease-in-out infinite .6s}
+.chip-2 .dot{background:var(--violet)}
+.chip-3{bottom:-14px;left:10%;animation:float 8s ease-in-out infinite .3s}
+.chip-3 .dot{background:#4ade80}
+
+/* ---------- Logo strip ---------- */
+.logos{padding:44px 0 20px;border-top:1px solid var(--border)}
+.logos p{text-align:center;font-size:.78rem;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.logos-row{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.logos-row span{font-family:var(--font-head);font-weight:600;font-size:1.02rem;letter-spacing:2.5px;color:rgba(255,255,255,.42);transition:color .25s}
+.logos-row span:hover{color:rgba(255,255,255,.75)}
+/* ---------- Section headers ---------- */
+.sec-head{max-width:700px;margin:0 auto 60px;text-align:center}
+.kicker{display:inline-block;font-family:var(--font-head);font-size:.78rem;font-weight:600;letter-spacing:2.6px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+h2{font-family:var(--font-head);font-size:clamp(1.9rem,3.4vw,2.7rem);letter-spacing:-1px;line-height:1.15;margin-bottom:16px}
+.sec-head p{color:var(--muted);font-size:1.05rem}
+
+/* ---------- Services ---------- */
+.services{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.svc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:30px 26px;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.svc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s}
+.svc-card:hover{transform:translateY(-6px);border-color:rgba(255,180,58,.35)}
+.svc-card:hover::before{opacity:1}
+.svc-icon{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);background:rgba(255,180,58,.1);border:1px solid rgba(255,180,58,.25)}
+.svc-card h3{font-family:var(--font-head);font-size:1.12rem;margin-bottom:10px;letter-spacing:-.3px}
+.svc-card p{font-size:.92rem;color:var(--muted)}
+.svc-tag{display:inline-block;margin-top:18px;font-size:.74rem;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent)}
+
+/* ---------- Portfolio ---------- */
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pf-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/10;border:1px solid var(--border);display:flex;align-items:flex-end;cursor:pointer}
+.pf-bg{position:absolute;inset:0;transition:transform .5s}
+.pf-item:hover .pf-bg{transform:scale(1.06)}
+.pf-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(5,5,10,.85))}
+.pf-info{position:relative;z-index:2;padding:22px;width:100%}
+.pf-cat{font-size:.72rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.pf-info h3{font-family:var(--font-head);font-size:1.05rem}
+.pf-dur{position:absolute;top:14px;right:14px;z-index:2;font-size:.72rem;font-weight:600;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:4px 10px;border-radius:6px;border:1px solid var(--border)}
+.pf-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);opacity:0;z-index:2;width:56px;height:56px;border-radius:50%;background:rgba(255,180,58,.94);display:flex;align-items:center;justify-content:center;transition:.3s}
+.pf-item:hover .pf-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.pf-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:28px}
+.pf-b1{background:radial-gradient(120% 130% at 20% 15%,rgba(255,180,58,.4),transparent 55%),linear-gradient(140deg,#2a1a08,#0e0e16)}
+.pf-b2{background:radial-gradient(120% 130% at 80% 20%,rgba(139,92,246,.42),transparent 55%),linear-gradient(140deg,#171032,#0d0d16)}
+.pf-b3{background:radial-gradient(120% 130% at 25% 80%,rgba(59,130,246,.35),transparent 55%),linear-gradient(140deg,#0a1a2e,#0c0c15)}
+.pf-b4{background:radial-gradient(120% 130% at 75% 75%,rgba(236,72,153,.32),transparent 55%),linear-gradient(140deg,#250f22,#0d0c15)}
+.pf-b5{background:radial-gradient(120% 130% at 30% 30%,rgba(74,222,128,.28),transparent 55%),linear-gradient(140deg,#0a2418,#0c0d15)}
+.pf-b6{background:radial-gradient(120% 130% at 70% 30%,rgba(255,122,26,.38),transparent 55%),linear-gradient(140deg,#26120a,#0e0d15)}
+
+/* ---------- Process ---------- */
+.process{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{position:relative;padding:30px 26px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:transform .3s,border-color .3s}
+.step:hover{transform:translateY(-5px);border-color:rgba(255,180,58,.3)}
+.step-num{font-family:var(--font-head);font-weight:700;font-size:2.4rem;letter-spacing:-2px;line-height:1;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}
+.step h3{font-family:var(--font-head);font-size:1.05rem;margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--muted)}
+.step::after{content:"\2192";position:absolute;top:34px;right:-15px;color:rgba(255,180,58,.5);font-size:1.25rem;z-index:2}
+.step:last-child::after{display:none}
+
+/* ---------- Testimonials ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;gap:18px;transition:transform .3s,border-color .3s}
+.testi-card:hover{transform:translateY(-5px);border-color:rgba(255,180,58,.3)}
+.stars{display:flex;gap:3px;color:var(--accent)}
+.testi-card>p{font-size:.95rem;color:#d9d9e6;flex:1}
+.testi-who{display:flex;align-items:center;gap:13px}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:.95rem;flex:none}
+.av-1{background:linear-gradient(135deg,#ffc255,#ff8a2a);color:#231202}
+.av-2{background:linear-gradient(135deg,#c4b5fd,#8b5cf6);color:#1e1145}
+.av-3{background:linear-gradient(135deg,#6ee7b7,#10b981);color:#052e1c}
+.testi-who b{display:block;font-size:.92rem}
+.testi-who span{font-size:.8rem;color:var(--muted)}
+
+/* ---------- Signup form ---------- */
+.signup{background:radial-gradient(700px 500px at 50% 0%,rgba(255,180,58,.09),transparent 60%),var(--bg)}
+.form-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.form-copy>p{color:var(--muted);font-size:1.05rem}
+.points{margin-top:34px}
+.point{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.point-ic{width:26px;height:26px;border-radius:50%;background:rgba(255,180,58,.12);border:1px solid rgba(255,180,58,.3);display:flex;align-items:center;justify-content:center;flex:none;margin-top:2px;color:var(--accent)}
+.point b{display:block;font-size:.98rem}
+.point span{font-size:.88rem;color:var(--muted)}
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:38px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+label{font-size:.85rem;font-weight:600;color:#d5d5e2}
+label .req{color:var(--accent)}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:13px 15px;color:var(--text);font-family:var(--font-body);font-size:1rem;transition:border-color .25s,box-shadow .25s;outline:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a0b4' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;cursor:pointer}
+select option{background:#13131d;color:#f5f5f9}
+textarea{resize:vertical;min-height:110px}
+input:focus,select:focus,textarea:focus{border-color:rgba(255,180,58,.6);box-shadow:0 0 0 4px rgba(255,180,58,.12)}
+input::placeholder,textarea::placeholder{color:#5d5d72}
+.field.error input,.field.error select,.field.error textarea{border-color:#f87171}
+.err-msg{display:none;font-size:.78rem;color:#f87171}
+.field.error .err-msg{display:block}
+.hp{position:absolute!important;left:-9999px!important;opacity:0;height:0;width:0;overflow:hidden}
+.form-note{font-size:.78rem;color:var(--muted);margin-top:14px;text-align:center}
+.form-alert{display:none;margin-top:18px;padding:14px 18px;border-radius:12px;font-size:.9rem;font-weight:500;line-height:1.5}
+.form-alert.success{display:block;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.35);color:#4ade80}
+.form-alert.error{display:block;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.35);color:#f87171}
+.form-alert.info{display:block;background:rgba(255,180,58,.1);border:1px solid rgba(255,180,58,.35);color:var(--accent)}
+.spinner{width:15px;height:15px;border:2px solid rgba(35,18,2,.35);border-top-color:#231202;border-radius:50%;display:inline-block;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--border);padding:56px 0 34px;background:var(--bg2)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-brand p{font-size:.9rem;color:var(--muted);margin-top:16px;max-width:330px}
+.foot-col h4{font-family:var(--font-head);font-size:.82rem;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:18px;color:var(--accent)}
+.foot-col a,.foot-col span{display:block;font-size:.92rem;color:var(--muted);margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:var(--text)}
+.foot-bottom{border-top:1px solid var(--border);padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.socials{display:flex;gap:12px}
+.socials a{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:.25s}
+.socials a:hover{color:var(--accent);border-color:rgba(255,180,58,.5);transform:translateY(-2px)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1020px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero{padding-top:130px}
+  .hero-visual{max-width:560px;margin:0 auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .pf-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step::after{display:none}
+  .testi-grid{grid-template-columns:1fr;max-width:640px;margin:0 auto}
+  .form-wrap{grid-template-columns:1fr;gap:44px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  section{padding:70px 0}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav .btn-nav{display:none}
+  .services-grid,.pf-grid,.steps{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .hero-stats{gap:28px}
+  .stat b{font-size:1.5rem}
+  .form-card{padding:26px 20px}
+  .chip-1{left:-2px}
+  .chip-2{right:-2px}
+  .chip-3{left:4%}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-ctas .btn{width:100%}
+  .logos-row{justify-content:center;gap:18px 26px}
+}
+</style>
+</head>
+<body>
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="Dunamis Digital — home">
+      <span class="logo-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="#120d02"><path d="M8 5v14l11-7z"/></svg></span>
+      <span>Dunamis&nbsp;<em>Digital</em></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#process">Process</a>
+      <a href="#testimonials">Clients</a>
+      <a href="#signup" class="btn btn-primary btn-nav">Get Started</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#work">Our Work</a>
+  <a href="#process">Process</a>
+  <a href="#testimonials">Clients</a>
+  <a href="#signup" class="btn btn-primary">Get a Free Quote</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="badge reveal"><span class="dot"></span> Now onboarding new business clients</span>
+      <h1 class="reveal">We turn your business into <span class="grad-text">cinematic stories</span> that convert.</h1>
+      <p class="hero-sub reveal">Dunamis Digital delivers professional video editing for companies, industries and big business owners — elevated with AI-powered storytelling that turns your services into stories people remember.</p>
+      <div class="hero-ctas reveal">
+        <a href="#signup" class="btn btn-primary">Start Your Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#work" class="btn btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> See Our Work</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat"><b data-count="480" data-suffix="+">0</b><span>Videos delivered</span></div>
+        <div class="stat"><b data-count="120" data-suffix="+">0</b><span>Companies served</span></div>
+        <div class="stat"><b data-count="9" data-suffix="">0</b><span>Industries</span></div>
+        <div class="stat"><b data-count="98" data-suffix="%">0</b><span>Client retention</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="reel-card">
+        <div class="chip chip-1"><span class="dot"></span> 4K Color Graded</div>
+        <div class="chip chip-2"><span class="dot"></span> AI Story Engine</div>
+        <div class="chip chip-3"><span class="dot"></span> 48h Turnaround</div>
+        <div class="reel-screen">
+          <button class="play-btn" id="playBtn" aria-label="Play showreel">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div class="reel-timeline">
+          <span class="timecode">00:00:12:07</span>
+          <div class="wavebars" id="wavebars" aria-hidden="true"></div>
+          <span class="timecode">HD • 4K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CLIENT STRIP ============ -->
+<section class="logos">
+  <div class="container">
+    <p class="reveal">Trusted by teams across manufacturing, energy, finance, real estate &amp; more</p>
+    <div class="logos-row reveal">
+      <span>NOVATEK</span><span>MERIDIAN</span><span>ALTUS&nbsp;GROUP</span><span>VANTAGE</span><span>HELIOS&nbsp;IND.</span><span>STRATA&nbsp;CO</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">What We Do</span>
+      <h2>Video content built for serious business</h2>
+      <p>From the boardroom to the factory floor, we edit and produce videos that make companies, industries and big business owners look world-class.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></svg></div>
+        <h3>Corporate Video Editing</h3>
+        <p>Company profiles, promo videos, executive messages and event recaps — polished to broadcast standard.</p>
+        <span class="svc-tag">For companies</span>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10l6 4v-4l6 4V4h4v17"/></svg></div>
+        <h3>Industrial &amp; Training Video</h3>
+        <p>Safety briefings, machinery walkthroughs and process documentation, edited with technical precision.</p>
+        <span class="svc-tag">For industries</span>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+        <h3>AI-Powered Storytelling</h3>
+        <p>We use AI-driven video to turn your services into compelling stories — scripts, voiceovers, motion and visuals that sell.</p>
+        <span class="svc-tag">For growth</span>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+        <h3>Brand &amp; Social Content</h3>
+        <p>Scroll-stopping brand films and short-form content engineered for LinkedIn, YouTube, Instagram and ads.</p>
+        <span class="svc-tag">For reach</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="work">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Our Work</span>
+      <h2>Stories we've brought to life</h2>
+      <p>A snapshot of the corporate films, industrial videos and AI-powered campaigns we produce.</p>
+    </div>
+    <div class="pf-grid">
+      <div class="pf-item reveal"><div class="pf-bg pf-b1"></div><span class="pf-dur">01:24</span><div class="pf-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg></div><div class="pf-info"><div class="pf-cat">Corporate Brand Film</div><h3>Meridian Group — Company Profile</h3></div></div>
+      <div class="pf-item reveal"><div class="pf-bg pf-b2"></div><span class="pf-dur">02:10</span><div class="pf-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg></div><div class="pf-info"><div class="pf-cat">Industrial Series</div><h3>Helios Industries — Plant Walkthrough</h3></div></div>
+      <div class="pf-item reveal"><div class="pf-bg pf-b3"></div><span class="pf-dur">00:45</span><div class="pf-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg></div><div class="pf-info"><div class="pf-cat">Product Launch</div><h3>Novatek — Product Reveal</h3></div></div>
+      <div class="pf-item reveal"><div class="pf-bg pf-b4"></div><span class="pf-dur">01:02</span><div class="pf-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg></div><div class="pf-info"><div class="pf-cat">AI Storytelling</div><h3>Strata Co — Service Story Campaign</h3></div></div>
+      <div class="pf-item reveal"><div class="pf-bg pf-b5"></div><span class="pf-dur">03:18</span><div class="pf-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg></div><div class="pf-info"><div class="pf-cat">Executive Thought Leadership</div><h3>Altus Group — CEO Interview Edit</h3></div></div>
+      <div class="pf-item reveal"><div class="pf-bg pf-b6"></div><span class="pf-dur">00:30</span><div class="pf-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#231202"><path d="M8 5v14l11-7z"/></svg></div><div class="pf-info"><div class="pf-cat">Social Campaign</div><h3>Vantage — LinkedIn Ad Series</h3></div></div>
+    </div>
+    <p class="pf-note reveal">Placeholder previews — swap each tile with a thumbnail from your showreel or case studies.</p>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process" class="process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">How It Works</span>
+      <h2>From brief to brilliant in four steps</h2>
+      <p>A simple, proven process that respects your time and your deadline.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h3>Discovery &amp; Goals</h3><p>We learn your business, your audience and the exact result the video must achieve.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h3>Story &amp; Script</h3><p>Our team — with an AI assist — crafts the script, storyboard and creative direction.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h3>Edit &amp; Production</h3><p>Professional editing, color grading, sound design and AI-powered motion bring it to life.</p></div>
+      <div class="step reveal"><div class="step-num">04</div><h3>Delivery &amp; Results</h3><p>Final cut in every format you need — ready for web, socials, screenings and ads.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Client Love</span>
+      <h2>Businesses that trust Dunamis Digital</h2>
+
+<video src="/video/WhatsApp Video 2026-11-05 at 05.52.07.mp4"  preload="auto"></video>
+<img src="/video/WhatsApp Video 2026-11-05 at 05.52.07.mp4" alt="test" height="50%" width="50%">
+
+
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>“Dunamis Digital turned a plain factory walkthrough into a brand film our clients actually share. Our inbound enquiries doubled within a quarter.”</p>
+        <div class="testi-who"><div class="avatar av-1">AO</div><div><b>Adaeze O.</b><span>Marketing Director, manufacturing group</span></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>“Fast, professional and genuinely creative. They understood our industry and delivered safety training videos our teams actually enjoy watching.”</p>
+        <div class="testi-who"><div class="avatar av-2">DK</div><div><b>David K.</b><span>Operations Manager, logistics company</span></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>“The AI storytelling videos they produced made our services easy to understand — and easy to buy. Best marketing decision we made this year.”</p>
+        <div class="testi-who"><div class="avatar av-3">SM</div><div><b>Sarah M.</b><span>Founder, real estate firm</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNUP FORM ============ -->
+<section id="signup" class="signup">
+  <div class="container form-wrap">
+    <div class="form-copy reveal">
+      <span class="kicker">Get Started</span>
+      <h2>Let's create your next video</h2>
+      <p>Tell us about your project and we'll get back to you within 24 hours with a free quote and creative direction.</p>
+      <div class="points">
+        <div class="point"><span class="point-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Free creative consultation</b><span>A quick call to map out your video goals — no pressure, no obligation.</span></div></div>
+        <div class="point"><span class="point-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Fast 48–72h turnaround</b><span>Tight deadline? Our edit pipeline is built for speed without compromise.</span></div></div>
+        <div class="point"><span class="point-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Revisions until it's right</b><span>We refine every cut until the story lands exactly how you imagined it.</span></div></div>
+      </div>
+    </div>
+    <div class="form-card reveal">
+      <form id="signupForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Jane Okafor" autocomplete="name" required />
+            <span class="err-msg">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="email">Work Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" autocomplete="email" required />
+            <span class="err-msg">Please enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="company">Company / Organization</label>
+            <input type="text" id="company" name="company" placeholder="Acme Industries" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000" autocomplete="tel" />
+          </div>
+          <div class="field full">
+            <label for="budget">Project Budget</label>
+            <select id="budget" name="budget">
+              <option value="">Select a range (optional)</option>
+              <option>Under $500</option>
+              <option>$500 – $1,500</option>
+              <option>$1,500 – $5,000</option>
+              <option>$5,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="message">Tell us about your project <span class="req">*</span></label>
+            <textarea id="message" name="message" placeholder="e.g. We need a 2-minute company profile video with an AI voiceover..." required></textarea>
+            <span class="err-msg">Please tell us a few words about your project.</span>
+          </div>
+          <!-- Honeypot anti-spam field: humans never see or fill this -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;margin-top:22px">
+          <span id="btnText">Get My Free Quote&nbsp;&rarr;</span>
+        </button>
+        <p class="form-note">No spam, ever. Your details are only used to respond to your inquiry.</p>
+        <div class="form-alert" id="formAlert" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="logo"><span class="logo-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="#120d02"><path d="M8 5v14l11-7z"/></svg></span><span>Dunamis&nbsp;<em>Digital</em></span></a>
+        <p>Professional video editing and AI-powered storytelling for companies, industries and big business owners.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#services">Services</a>
+        <a href="#work">Our Work</a>
+        <a href="#process">Process</a>
+        <a href="#signup">Get a Quote</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <span>hello@dunamisdigital.com</span>
+        <span>08164124216</span>
+        <span>Mon–Sat, 9am–6pm</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Dunamis Digital. All rights reserved.</span>
+      <div class="socials">
+        <a href="#" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   DUNAMIS DIGITAL — LANDING PAGE SCRIPT
+   ---------------------------------------------------------------------
+   HOW TO CONNECT YOUR WEBHOOK:
+   1) Paste your webhook endpoint between the quotes below, e.g.
+        const WEBHOOK_URL = "https://hook.us2.make.com/your-webhook-id";
+      Works with Make.com, Zapier, n8n, Google Apps Script or your own API.
+   2) The form POSTs the following JSON:
+        { name, email, company, phone, budget, message, source, submittedAt }
+   3) Make.com accepts this request directly — no CORS workaround needed.
+      (If you ever switch back to a webhook that blocks browser reads,
+      set USE_NO_CORS to true: data is still delivered, the page just
+      cannot read the webhook's response.)
+===================================================================== */
+const WEBHOOK_URL = "https://hook.us2.make.com/kginmruhj1ck3r3lekvhqrgi1gjx5ey1";   // <-- Make.com webhook URL
+const USE_NO_CORS = false;                            // <-- set true if you hit CORS errors
+
+/* ---------- Sticky nav ---------- */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+/* ---------- Mobile menu ---------- */
+const hb = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
+hb.addEventListener('click', () => {
+  const open = mm.classList.toggle('open');
+  hb.classList.toggle('open', open);
+  hb.setAttribute('aria-expanded', open);
+});
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mm.classList.remove('open'); hb.classList.remove('open'); hb.setAttribute('aria-expanded', 'false');
+}));
+
+/* ---------- Hero: play button -> portfolio ---------- */
+document.getElementById('playBtn').addEventListener('click', () =>
+  document.getElementById('work').scrollIntoView({ behavior: 'smooth' }));
+
+/* ---------- Animated audio waveform ---------- */
+const wb = document.getElementById('wavebars');
+for (let i = 0; i < 42; i++) {
+  const b = document.createElement('i');
+  b.style.height = (6 + Math.random() * 26) + 'px';
+  b.style.animationDelay = (i * 0.07).toFixed(2) + 's';
+  b.style.animationDuration = (0.9 + Math.random() * 1.2).toFixed(2) + 's';
+  wb.appendChild(b);
+}
+
+/* (scroll-reveal disabled for reliability — all content renders statically) */
+
+/* ---------- Animated stat counters ---------- */
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target; cObs.unobserve(el);
+    const target = +el.dataset.count, suffix = el.dataset.suffix || '';
+    const t0 = performance.now(), dur = 1500;
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('[data-count]').forEach(el => cObs.observe(el));
+
+/* =====================================================================
+   SIGNUP FORM — validation + webhook submission
+===================================================================== */
+const F = document.getElementById('signupForm');
+const alertBox = document.getElementById('formAlert');
+const btn = document.getElementById('submitBtn');
+const btnText = document.getElementById('btnText');
+const defaultBtnLabel = btnText.innerHTML;
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+function showAlert(type, msg) { alertBox.textContent = msg; alertBox.className = 'form-alert ' + type; }
+function hideAlert() { alertBox.className = 'form-alert'; alertBox.textContent = ''; }
+function setErr(id, bad) { document.getElementById(id).closest('.field').classList.toggle('error', bad); }
+function setLoading(on) {
+  btn.disabled = on;
+  btnText.innerHTML = on
+    ? '<span style="display:inline-flex;align-items:center;gap:10px"><span class="spinner"></span>Sending&hellip;</span>'
+    : defaultBtnLabel;
+}
+
+F.addEventListener('submit', async e => {
+  e.preventDefault();
+  hideAlert();
+
+  /* Honeypot: silently ignore bots that fill the hidden field */
+  if (F.elements['website'].value !== '') return;
+
+  /* Validation */
+  const name = F.elements['name'].value.trim();
+  const email = F.elements['email'].value.trim();
+  const message = F.elements['message'].value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  setErr('name', !name);
+  setErr('email', !emailOk);
+  setErr('message', !message);
+  if (!name || !emailOk || !message) {
+    showAlert('error', 'Please fix the highlighted fields and try again.');
+    return;
+  }
+
+  /* Payload sent to your webhook as JSON */
+  const data = {
+    name: name,
+    email: email,
+    company: F.elements['company'].value.trim(),
+    phone: F.elements['phone'].value.trim(),
+    budget: F.elements['budget'].value,
+    message: message,
+    source: 'Dunamis Digital — Landing Page',
+    submittedAt: new Date().toISOString()
+  };
+
+  setLoading(true);
+  try {
+    /* Demo mode: lets you test the form before connecting a webhook.
+       (This must stay as the PLACEHOLDER text — do NOT put your real
+       webhook URL here, or the form will never send data to Make.com!) */
+    if (WEBHOOK_URL.indexOf('PASTE_YOUR_WEBHOOK_URL_HERE') !== -1) {
+      await wait(1100);
+      showAlert('info', '\u2705 Demo mode — the form works! Paste your webhook URL into WEBHOOK_URL at the top of the script section to receive real submissions.');
+      F.reset();
+      return;
+    }
+
+    /* Build the data we send to Make.com. Make receives it as JSON —
+       the field names (name, email, company, phone, budget, message,
+       source, submittedAt) will appear as the webhook's data structure. */
+    const data = {
+      name: name,
+      email: email,
+      company: F.elements['company'].value.trim(),
+      phone: F.elements['phone'].value.trim(),
+      budget: F.elements['budget'].value,
+      message: message,
+      source: 'Dunamis Digital — Landing Page',
+      submittedAt: new Date().toISOString()
+    };
+
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('Webhook responded with status ' + res.status);
+
+    showAlert('success', '\uD83C\uDF89 Thank you, ' + name.split(' ')[0] + "! Your request was received — we'll reply within 24 hours.");
+    F.reset();
+  } catch (err) {
+    showAlert('error', '\u274C Something went wrong while sending your request. Please email us directly at hello@dunamisdigital.com.');
+  } finally {
+    setLoading(false);
+  }
+});
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
